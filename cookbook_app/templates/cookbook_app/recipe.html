@@ -1,0 +1,59 @@
+{% extends "cookbook_app/base.html" %}
+
+<!-- Replace block content in base_template.html -->
+{% block content %}
+
+    <div class="container mt-3 col-6">
+    <br><br>
+        <form class="col-6 max-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h4> Create Recipe </h4>
+            <hr>
+            <div class="form-group">
+                <label for="exampleInputEmail1"> Recipe Name </label>
+                <br>
+                <input name="name" type="text" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleInputPassword1"> Description </label>
+                <br>
+                <textarea name="description" id="text" rows="5" cols="30"></textarea>
+            </div>
+            <br>
+            <button type="submit" class="">Add</button>
+        </form>
+        <hr>
+
+        <div class="class mt-5">
+            <form action="">
+                <button> <a href="#"> Generate Plan </a></button>
+            </form>
+
+            <table class="table mt-6">
+                <thead>
+                <tr>
+                    <th scope="col">S.No. </th>
+                    <th scope="col">Recipe Name </th>
+                    <th scope="col">Description </th>
+                    <th scope="col">Actions </th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    {% for recipe in recipes %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td> {{ recipe.name }}</td>
+                            <td> {{ recipe.description }}</td>
+                            <td>
+                                <a href="/delete_recipe/{{ recipe.id }}"> Delete</a>
+                                <a href="/update_recipe/{{ recipe.id }}"> Update</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+.navbar-container {
+    margin-bottom: 75px;
+}
+
+.col-sm-10 {
+    margin-left: 25px;
+    margin-right: 25px;
+    font-size: 100%;
+}
+
+h1{
+    color: black;
+    font-size: 2em;
+}
+
+h2{
+    color: darkgray;
+    font-size: 1.25em;
+}
