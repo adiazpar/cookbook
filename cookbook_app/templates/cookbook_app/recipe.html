@@ -3,37 +3,35 @@
 <!-- Replace block content in base_template.html -->
 {% block content %}
 
-    <div class="container mt-3 col-6">
-    <br><br>
-        <form class="col-6 max-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+    <div class="container">
+    <br>
+        <form class="card p-3 shadow-lg mx-auto container-fluid" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <h4> Create Recipe </h4>
             <hr>
-            <div class="form-group">
-                <label for="exampleInputEmail1"> Recipe Name </label>
-                <br>
-                <input name="name" type="text" required>
+            <div class="form-group mb-auto">
+                <label for="exampleInputEmail1"> Recipe Name <br>
+                    <input name="name" type="text" required>
+                </label>
             </div>
             <br>
-            <div class="form-group">
-                <label for="exampleInputPassword1"> Description </label>
-                <br>
-                <textarea name="description" id="text" rows="5" cols="30"></textarea>
+            <div class="form-group mb-auto">
+                <label for="exampleInputPassword1"> Description <br>
+                    <textarea name="description" id="text" rows="8"></textarea>
+                </label>
             </div>
             <br>
-            <button type="submit" class="">Add</button>
+            <button type="submit" class="mb-auto container-fluid">Add</button>
+            <br>
         </form>
+        <br>
         <hr>
 
         <div class="class mt-5">
-            <form action="">
-                <button> <a href="#"> Generate Plan </a></button>
-            </form>
-
             <table class="table mt-6">
                 <thead>
                 <tr>
-                    <th scope="col">S.No. </th>
+                    <th scope="col">ID </th>
                     <th scope="col">Recipe Name </th>
                     <th scope="col">Description </th>
                     <th scope="col">Actions </th>

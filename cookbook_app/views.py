@@ -23,7 +23,7 @@ def recipes(request):
             name = name,
             description = description,
         )
-        return redirect('/')
+        return redirect('/recipes')
 
     queryset = Recipe.objects.all()
     if request.GET.get('search'):
@@ -56,7 +56,7 @@ def update_recipe(request, id):
 def delete_recipe(request, id):
     queryset = Recipe.objects.get(id=id)
     queryset.delete()
-    return redirect('/')
+    return redirect('/recipes')
 
 
 # ------------------------- AUTH VIEWS -------------------------- #

@@ -1,8 +1,69 @@
-.navbar-container {
-    margin-bottom: 75px;
+/* Navigation Bar Logo Styling */
+#logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    filter: invert(100%);
 }
 
-.col-sm-10 {
+#img {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 45px;
+}
+
+
+/* Navigation Bar Styling */
+nav {
+    border: 2px solid white;
+    background-color: cornflowerblue;
+    box-shadow: 0 5px 5px -4px rgba(0,0,0,0.3);
+
+    margin: 5px;
+    margin-bottom: 25px;
+    font-family: Arial, serif;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+    display: flex;
+    justify-content: left;
+}
+ul li {
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+
+    text-align: center;
+    font-size: 75%;
+}
+ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    display: block;
+}
+ul li a:hover {
+    background-color: lightblue;
+}
+
+#login_text {
+    border-left: 2px solid white;
+    background-color: limegreen;
+    text-transform: uppercase;
+}
+#login_text:hover {
+    background-color: lightblue;
+}
+
+
+/* Header & Body Styling */
+.custom-body {
     margin-left: 25px;
     margin-right: 25px;
     font-size: 100%;
