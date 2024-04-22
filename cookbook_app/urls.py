@@ -6,9 +6,9 @@ urlpatterns = [
     path('', views.home, name='home'),
 
     # Define URL pattern for the login view:
+    path('register/', views.register_page, name='register'),
     path('login/', views.login_page, name='login'),
     path('logout/', views.custom_logout, name='logout'),
-    path('register/', views.register_page, name='register'),
     path('admin/', admin.site.urls),
 
     path('recipes/', views.recipes, name='recipes'),
