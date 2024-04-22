@@ -17,29 +17,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="/js/bootstrap.js"></script>
     </head>
 
-    <!-- Navbar-->
-    <div class="navbar-container">
-    <nav>
-        <ul>
-            <li id="img"><img src="{% static 'images/chef_hat.png' %}" id="logo" alt="CB Logo" /></li>
-            <li><a href="{% url 'home' %}"> Home </a></li>
-            <li><a href="{% url 'recipes' %}"> Your Recipes </a></li>
-            <li><a href="#"> Community </a></li>
+<!-- Navbar-->
+<nav class="navbar navbar-expand-md">
+    <div class="container-fluid">
+        <a class="navbar-brand" id="img">
+            <img src="{% static 'images/chef_hat.png' %}" id="logo" alt="CB Logo" />
+        </a>
 
-            <div class="ms-auto">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"
+        aria-expanded="false" aria-controls="navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item active"><a href="{% url 'home' %}"> Home </a></li>
+                <li class="nav-item"><a href="{% url 'recipes' %}"> Your Recipes </a></li>
+                <li class="nav-item"><a href="#"> Community </a></li>
+
                 {% if user.is_authenticated %}
-                    <li><a id="login_text" href="{% url 'logout' %}"> Logout </a></li>
+                    <li class="nav-item"><a id="login_text" href="{% url 'logout' %}"> Logout </a></li>
                 {% else %}
-                    <li><a id="login_text" href="{% url 'login' %}"> Login </a></li>
+                    <li class="nav-item"><a id="login_text" href="{% url 'login' %}"> Login </a></li>
                 {% endif %}
-            </div>
-        </ul>
-    </nav>
+            </ul>
+        </div>
     </div>
+</nav>
+
 
     <!-- Body-->
     <body>

@@ -15,3 +15,4 @@ urlpatterns = [
     path('update_recipe/<id>', views.update_recipe, name='update_recipe'),
     path('delete_recipe/<id>', views.delete_recipe, name='delete_recipe'),
 ]
+
