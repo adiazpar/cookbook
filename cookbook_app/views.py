@@ -3,7 +3,6 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import CreateUserForm
 from .models import Recipe
 
 # Create your views here.
@@ -44,49 +43,40 @@ def login_page(request):
 
 # Register page for user:
 def register_page(request):
-    form = CreateUserForm()
-
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect('login')
-
-    context = {'registerform':form}
-    return render(request, "cookbook_app/register.html", context=context)
-
-    """
     if request.method == 'POST':
         try:
-            username = request.POST.get['username']
-            email = request.POST.get['email']
-            password = request.POST.get['password']
-            user_obj = User.objects.filter(username=username.lower())
+            username = request.POST.get('username')
+            email = request.POST.get('email')
+            password1 = request.POST.get('password1')
+            password2 = request.POST.get('password2')
 
+            user_obj = User.objects.filter(username=username.lower())
             if user_obj.exists():
                 messages.error(request, 'Username already exists')
-                return redirect('/register/')
+                return redirect('register')
 
-            user_obj = User.objects.create(username=username.lower())
-            user_obj.set_password(password)
-            user_obj.set_email(email)
+            if password1 != password2:
+                messages.error(request, 'Passwords do not match')
+                return redirect('register')
+
+            user_obj = User.objects.create(username=username.lower(), email=email)
+            user_obj.set_password(password1)
             user_obj.save()
 
             messages.success(request, 'Account created successfully')
-            return redirect('/login')
+            return redirect('login')
 
         except Exception as e:
             messages.error(request, 'Something went wrong...')
-            return redirect('/register')
+            return redirect('register')
 
     return render(request, "cookbook_app/register.html")
-    """
+
 
 # Logout functionality:
 def custom_logout(request):
     logout(request)
-    return redirect('login')
+    return redirect('home')
 
 
 # ------------------------ RECIPE VIEWS ------------------------- #
@@ -95,19 +85,18 @@ def custom_logout(request):
 def recipes(request):
     if request.method == 'POST':
         data = request.POST
+        user = request.user
         name = data.get('name')
         description = data.get('description')
+
         Recipe.objects.create(
+            user = user,
             name = name,
             description = description,
         )
         return redirect('/recipes')
 
-    queryset = Recipe.objects.all()
-    if request.GET.get('search'):
-        queryset = queryset.filter(
-            day_icontains=request.GET.get('search'))
-
+    queryset = Recipe.objects.filter(user=request.user).values()
     context = {'recipes': queryset}
     return render(request, 'cookbook_app/recipe.html', context)
 

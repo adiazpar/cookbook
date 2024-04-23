@@ -1,0 +1,30 @@
+{% extends "cookbook_app/base.html" %}
+{% block content %}
+
+    <div class="container">
+
+        <form class="card p-3 shadow-lg mx-auto container-fluid" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h4> Editing Recipe </h4>
+            <hr>
+            <div class="form-group mb-auto">
+                <label for="exampleInputEmail1"> Recipe Name <br>
+                    <input name="name" type="text" value="{{ recipe.name }}" required>
+                </label>
+            </div>
+            <br>
+            <div class="form-group mb-auto">
+                <label for="exampleInputPassword1"> Description <br>
+                    <textarea name="description" type="text" rows="8"
+                              value=recipe.description></textarea>
+                </label>
+            </div>
+
+            <br>
+            <br>
+
+            <button type="submit"> Update Data </button>
+        </form>
+    </div>
+
+{% endblock %}
