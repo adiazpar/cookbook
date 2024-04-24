@@ -27,6 +27,7 @@ def login_page(request):
             user = authenticate(request, username=username.lower(), password=password)
             if user is not None:
                 login(request, user)
+
                 return redirect('home')
 
             # If user isn't authenticated above, display wrong password:
