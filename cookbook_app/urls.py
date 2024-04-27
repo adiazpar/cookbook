@@ -9,7 +9,6 @@ urlpatterns = [
     path('register/', views.register_page, name='register'),
     path('login/', views.login_page, name='login'),
     path('logout/', views.custom_logout, name='logout'),
-    path('admin/', admin.site.urls),
 
     path('recipes/', views.recipes, name='recipes'),
     path('update_recipe/<id>', views.update_recipe, name='update_recipe'),

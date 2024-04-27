@@ -3,11 +3,11 @@
 <!-- Replace block content in base_template.html -->
 {% block content %}
 
-    <div class="container">
     <br>
-        <form class="card p-3 shadow-lg mx-auto container-fluid" method="post" enctype="multipart/form-data">
+    <div class="container-fluid card p-3 shadow-lg mx-auto">
+        <form method="post" enctype="multipart/form-data" autocomplete="off">
             {% csrf_token %}
-            <h4> Create Recipe </h4>
+            <h4>Add a New Recipe</h4>
             <hr>
             <div class="form-group mb-auto">
                 <label for="exampleInputEmail1"> Recipe Name <br>
@@ -24,34 +24,34 @@
             <button type="submit" class="mb-auto container-fluid">Add</button>
             <br>
         </form>
-        <br>
-        <hr>
-
-        <div class="class mt-5">
-            <table class="table mt-6">
-                <thead>
-                <tr>
-                    <th scope="col">ID </th>
-                    <th scope="col">Recipe Name </th>
-                    <th scope="col">Description </th>
-                    <th scope="col">Actions </th>
-                </tr>
-                </thead>
-
-                <tbody>
-                    {% for recipe in recipes %}
-                        <tr>
-                            <th scope="row">{{ forloop.counter }}</th>
-                            <td> {{ recipe.name }}</td>
-                            <td> {{ recipe.description }}</td>
-                            <td>
-                                <a href="/update_recipe/{{ recipe.id }}"> Edit</a>
-                                <a href="/delete_recipe/{{ recipe.id }}"> Delete</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
     </div>
+    <br>
+    <hr>
+    <div class="container-fluid card p-3 shadow-lg mx-auto">
+        <table class="table mt-6">
+            <thead>
+            <tr>
+                <th scope="col">ID </th>
+                <th scope="col">Recipe Name </th>
+                <th scope="col">Description </th>
+                <th scope="col">Actions </th>
+            </tr>
+            </thead>
+
+            <tbody>
+                {% for recipe in recipes %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td> {{ recipe.name }}</td>
+                        <td> {{ recipe.description }}</td>
+                        <td>
+                            <a href="/update_recipe/{{ recipe.id }}"> Edit</a>
+                            <a href="/delete_recipe/{{ recipe.id }}"> Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
 {% endblock %}

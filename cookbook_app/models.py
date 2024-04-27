@@ -28,7 +28,7 @@ class Recipe(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=False)
     name = models.CharField(max_length=200, default='')
     description = models.CharField(max_length=500, default='')
-    ingredients = models.ManyToManyField(IngredientSet, blank=True, null=True)
+    ingredients = models.ManyToManyField(IngredientSet, blank=True)
 
     # Define default String to return the name for representing the Model object:
     def __str__(self):
