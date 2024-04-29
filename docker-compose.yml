@@ -1,10 +1,25 @@
+# Specifies the version of the docker-compose file.
+# Version is important so Docker Compose can tell what features are needed
 version: '3.11.7-slim'
 
+# Contains the specifications for the actual containers. Can define
+# multiple containers in this section. I am only using django:
 services:
+  # Name of my container. This is purely for reference.
   django:
+    # The name of my image. I searched Dockerhub for the correct image to use.
+    # Name : version number
     image: django-docker:0.0.1
     build: .
     stdin_open: true
     tty: true
+
+    # The ports directive allows me to set one or more mappings from the host
+    # to the container. Below I have mapped port 8000 on the host computer to
+    # port 8000 in the container.
     ports:
       - '8000:8000'
+
+# Resources used:
+# https://adamtheautomator.com/docker-compose-tutorial/
+# https://hub.docker.com/
